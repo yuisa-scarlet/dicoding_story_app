@@ -43,16 +43,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (!mounted) return;
 
     final state = authProvider.registerState;
-    if (state is BaseResultStateSuccess) {
+    if (state is BaseResultStateSuccess<void>) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('${context.strings.register} success')),
+        SnackBar(
+          content: Text(context.strings.registerSuccess),
+          backgroundColor: Colors.green,
+        ),
       );
       context.read<NavigationProvider>().goToLogin();
       return;
     }
-    if (state is BaseResultStateError) {
+    if (state is BaseResultStateError<void>) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(state.errorMessage)),
+        SnackBar(
+          content: Text(state.errorMessage),
+          backgroundColor: Colors.red,
+        ),
       );
     }
   }

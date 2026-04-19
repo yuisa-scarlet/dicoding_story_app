@@ -41,9 +41,19 @@ class _LoginScreenState extends State<LoginScreen> {
     if (!mounted) return;
 
     final state = authProvider.loginState;
-    if (state is BaseResultStateError<UserSession>) {
+    if (state is BaseResultStateSuccess<UserSession>) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(state.errorMessage)),
+        SnackBar(
+          content: Text(context.strings.loginSuccess),
+          backgroundColor: Colors.green,
+        ),
+      );
+    } else if (state is BaseResultStateError<UserSession>) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(state.errorMessage),
+          backgroundColor: Colors.red,
+        ),
       );
     }
     // Navigation to home is handled automatically by AppRouterDelegate

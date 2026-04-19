@@ -62,6 +62,21 @@ class AppStrings {
         'Cerita berhasil diunggah.',
         'ストーリーの送信に成功しました。',
       );
+  String get loginSuccess => _value(
+        'Login successful. Welcome back!',
+        'Login berhasil. Selamat datang kembali!',
+        'ログインに成功しました。おかえりなさい！',
+      );
+  String get registerSuccess => _value(
+        'Account created. Please login.',
+        'Akun berhasil dibuat. Silakan masuk.',
+        'アカウントを作成しました。ログインしてください。',
+      );
+  String get logoutSuccess => _value(
+        'Logged out successfully.',
+        'Berhasil keluar.',
+        'ログアウトしました。',
+      );
   String get sessionExpired => _value(
         'Session expired. Please login again.',
         'Sesi habis. Silakan login kembali.',

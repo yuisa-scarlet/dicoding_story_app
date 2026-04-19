@@ -65,6 +65,16 @@ class SettingScreen extends StatelessWidget {
               return FilledButton.icon(
                 onPressed: () async {
                   await authProvider.logout();
+                  if (context.mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          AppStrings.of(context).logoutSuccess,
+                        ),
+                        backgroundColor: Colors.green,
+                      ),
+                    );
+                  }
                   // Navigation to login is handled automatically by AppRouterDelegate
                 },
                 icon: const Icon(Icons.logout),
