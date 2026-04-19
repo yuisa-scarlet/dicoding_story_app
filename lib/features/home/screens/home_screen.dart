@@ -60,9 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(strings.appTitle),
         actions: [
           IconButton(
-            onPressed: () => context
-                .read<NavigationProvider>()
-                .goToAddStory(),
+            onPressed: () => context.read<NavigationProvider>().goToAddStory(),
             icon: const Icon(Icons.add),
           ),
         ],

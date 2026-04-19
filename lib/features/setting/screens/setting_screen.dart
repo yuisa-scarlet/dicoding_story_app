@@ -52,17 +52,14 @@ class SettingScreen extends StatelessWidget {
                     isActive
                         ? Icons.radio_button_checked
                         : Icons.radio_button_off,
-                    color:
-                        isActive ? AppColor.primary : AppColor.disabled,
+                    color: isActive ? AppColor.primary : AppColor.disabled,
                   ),
                   title: Text(
                     label,
                     style: TextStyle(
-                      color:
-                          isActive ? AppColor.primary : AppColor.textBody,
-                      fontWeight: isActive
-                          ? FontWeight.w600
-                          : FontWeight.normal,
+                      color: isActive ? AppColor.primary : AppColor.textBody,
+                      fontWeight:
+                          isActive ? FontWeight.w600 : FontWeight.normal,
                     ),
                   ),
                   onTap: () => localeProvider.setLocale(Locale(code)),
@@ -118,4 +115,3 @@ class SettingScreen extends StatelessWidget {
     );
   }
 }
-

@@ -19,8 +19,7 @@ class AuthProvider extends ChangeNotifier {
   UserSession? _session;
   BaseResultState<UserSession> _loginState =
       const BaseResultStateInitial<UserSession>();
-  BaseResultState<void> _registerState =
-      const BaseResultStateInitial<void>();
+  BaseResultState<void> _registerState = const BaseResultStateInitial<void>();
 
   UserSession? get session => _session;
   bool get isLoggedIn => _session?.token.isNotEmpty == true;
@@ -90,8 +89,7 @@ class AuthProvider extends ChangeNotifier {
         throw Exception(decoded['message'] ?? 'Login failed');
       }
 
-      final loginResult =
-          decoded['loginResult'] as Map<String, dynamic>? ?? {};
+      final loginResult = decoded['loginResult'] as Map<String, dynamic>? ?? {};
       final session = UserSession.fromJson(loginResult);
 
       _session = session;
@@ -123,4 +121,3 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
-

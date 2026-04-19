@@ -112,7 +112,8 @@ class AppRouterDelegate extends RouterDelegate<AppRoutePath>
     required AuthProvider authProvider,
     required NavigationProvider navigationProvider,
   })  : _authProvider = authProvider,
-        _navigationProvider = navigationProvider {
+        _navigationProvider = navigationProvider,
+        _wasLoggedIn = authProvider.isLoggedIn {
     _authProvider.addListener(_onAuthChanged);
     _navigationProvider.addListener(notifyListeners);
   }
@@ -120,18 +121,24 @@ class AppRouterDelegate extends RouterDelegate<AppRoutePath>
   final AuthProvider _authProvider;
   final NavigationProvider _navigationProvider;
 
+  bool _wasLoggedIn = false;
+
   @override
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   void _onAuthChanged() {
-    if (_authProvider.isLoggedIn) {
+    final isLoggedIn = _authProvider.isLoggedIn;
+
+    if (isLoggedIn && !_wasLoggedIn) {
       final page = _navigationProvider.current.page;
       if (page == AppPage.login || page == AppPage.register) {
         _navigationProvider.goToHome();
       }
-    } else {
+    } else if (!isLoggedIn && _wasLoggedIn) {
       _navigationProvider.goToLogin();
     }
+
+    _wasLoggedIn = isLoggedIn;
     notifyListeners();
   }
 
@@ -274,4 +281,3 @@ class AppRouteInformationParser extends RouteInformationParser<AppRoutePath> {
     }
   }
 }
-

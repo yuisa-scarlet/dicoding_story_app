@@ -41,7 +41,8 @@ class StoryListProvider extends ChangeNotifier {
       _stories = fetched;
       _currentPage = 1;
       _hasMore = fetched.length >= AppConfig.pageSize;
-      _state = BaseResultStateSuccess<List<StoryModel>>(List.unmodifiable(_stories));
+      _state =
+          BaseResultStateSuccess<List<StoryModel>>(List.unmodifiable(_stories));
     } on SocketException {
       _state = const BaseResultStateError<List<StoryModel>>(
         'No internet connection',
@@ -68,7 +69,8 @@ class StoryListProvider extends ChangeNotifier {
       _stories = [..._stories, ...fetched];
       _currentPage = nextPage;
       _hasMore = fetched.length >= AppConfig.pageSize;
-      _state = BaseResultStateSuccess<List<StoryModel>>(List.unmodifiable(_stories));
+      _state =
+          BaseResultStateSuccess<List<StoryModel>>(List.unmodifiable(_stories));
     } on SocketException {
       // keep existing list, silently fail — user can scroll up and back to retry
     } catch (_) {
@@ -94,4 +96,3 @@ class StoryListProvider extends ChangeNotifier {
         .toList();
   }
 }
-

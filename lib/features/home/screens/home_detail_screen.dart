@@ -58,7 +58,8 @@ class _HomeDetailScreenState extends State<HomeDetailScreen> {
                     imageUrl: story.photoUrl,
                     fit: BoxFit.cover,
                     useShimmer: true,
-                    errorBuilder: (context, error, stackTrace) => const ColoredBox(
+                    errorBuilder: (context, error, stackTrace) =>
+                        const ColoredBox(
                       color: Color(0xFFF3F4F6),
                       child: Center(
                         child: Icon(

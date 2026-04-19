@@ -95,4 +95,3 @@ class AddStoryProvider extends ChangeNotifier {
     return double.tryParse(value.trim());
   }
 }
-

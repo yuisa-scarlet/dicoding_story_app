@@ -138,8 +138,7 @@ class _NavItem extends StatelessWidget {
             style: TextStyle(
               color: color,
               fontSize: 10,
-              fontWeight:
-                  isActive ? FontWeight.w600 : FontWeight.normal,
+              fontWeight: isActive ? FontWeight.w600 : FontWeight.normal,
             ),
           ),
         ],
@@ -147,4 +146,3 @@ class _NavItem extends StatelessWidget {
     );
   }
 }
-

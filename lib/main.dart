@@ -48,4 +48,3 @@ Future<void> _initializeApp(
     debugPrint('App initialization error: $e');
   }
 }
-

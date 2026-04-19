@@ -50,6 +50,5 @@ class LoginController {
     // Navigation to home is handled automatically by AppRouterDelegate
   }
 
-  void goToRegister() =>
-      context.read<NavigationProvider>().goToRegister();
+  void goToRegister() => context.read<NavigationProvider>().goToRegister();
 }
