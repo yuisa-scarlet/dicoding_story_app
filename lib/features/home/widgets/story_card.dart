@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../shared/localization/app_strings.dart';
 import '../../../shared/model/story.dart';
+import '../../../shared/theme/app_color.dart';
 
 class StoryCard extends StatelessWidget {
   const StoryCard({
@@ -15,55 +15,95 @@ class StoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final strings = context.strings;
-
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: onTap,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withAlpha(13),
+              blurRadius: 16,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AspectRatio(
-              aspectRatio: 16 / 9,
-              child: Image.network(
-                story.photoUrl,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  return const ColoredBox(
-                    color: Color(0xFFE0E0E0),
-                    child: Icon(Icons.broken_image_outlined, size: 48),
-                  );
-                },
-              ),
-            ),
+            // Header: avatar + name + date
             Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              padding: const EdgeInsets.fromLTRB(16, 14, 16, 10),
+              child: Row(
                 children: [
-                  Text(
-                    story.name,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    strings.storyBy(story.name),
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    story.description,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    story.formattedCreatedAt,
-                    style: Theme.of(context).textTheme.labelMedium,
+                  _Avatar(name: story.name),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          story.name,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 15,
+                            color: AppColor.textDark,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          story.formattedCreatedAt,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: AppColor.textMuted,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
+              ),
+            ),
+            // Description
+            if (story.description.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+                child: Text(
+                  story.description,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: AppColor.textBody,
+                    height: 1.4,
+                  ),
+                ),
+              ),
+            // Image
+            ClipRRect(
+              borderRadius: const BorderRadius.vertical(
+                bottom: Radius.circular(16),
+              ),
+              child: AspectRatio(
+                aspectRatio: 16 / 9,
+                child: Image.network(
+                  story.photoUrl,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const ColoredBox(
+                      color: Color(0xFFF3F4F6),
+                      child: Center(
+                        child: Icon(
+                          Icons.broken_image_outlined,
+                          size: 48,
+                          color: AppColor.disabled,
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ],
@@ -72,3 +112,32 @@ class StoryCard extends StatelessWidget {
     );
   }
 }
+
+class _Avatar extends StatelessWidget {
+  const _Avatar({required this.name});
+
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    final initial = name.isNotEmpty ? name[0].toUpperCase() : '?';
+    return Container(
+      width: 40,
+      height: 40,
+      decoration: const BoxDecoration(
+        color: AppColor.primary,
+        shape: BoxShape.circle,
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        initial,
+        style: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+        ),
+      ),
+    );
+  }
+}
+

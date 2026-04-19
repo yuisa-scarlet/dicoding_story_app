@@ -78,9 +78,7 @@ class SettingScreen extends StatelessWidget {
               );
             },
           ),
-          const SizedBox(height: 32),
-          const Divider(color: AppColor.borderLight),
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
           Consumer<AuthProvider>(
             builder: (context, authProvider, _) {
               return SizedBox(
