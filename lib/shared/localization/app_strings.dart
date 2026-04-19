@@ -31,6 +31,15 @@ class AppStrings {
   }
 
   String get appTitle => _value('Story App', 'Story App', 'ストーリーアプリ');
+  String get loginTitle => _value(
+        'Login to your\nAccount',
+        'Masuk ke\nAkunmu',
+        'アカウントに\nログイン',
+      );
+  String get signIn => _value('Sign In', 'Masuk', 'ログイン');
+  String get forgotPassword =>
+      _value('Forgot the password?', 'Lupa kata sandi?', 'パスワードをお忘れですか？');
+  String get rememberMe => _value('Remember me', 'Ingat saya', 'ログイン状態を保持');
   String get login => _value('Login', 'Masuk', 'ログイン');
   String get register => _value('Register', 'Daftar', '登録');
   String get email => _value('Email', 'Email', 'メール');
