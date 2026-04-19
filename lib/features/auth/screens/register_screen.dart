@@ -5,6 +5,7 @@ import '../../../core/app_route.dart';
 import '../../../core/base_result_state.dart';
 import '../../../shared/localization/app_strings.dart';
 import '../../../shared/theme/app_color.dart';
+import '../../../shared/widgets/app_snack_bar.dart';
 import '../../../shared/widgets/rounded_text_field.dart';
 import '../providers/auth_provider.dart';
 
@@ -44,22 +45,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     final state = authProvider.registerState;
     if (state is BaseResultStateSuccess<void>) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(context.strings.registerSuccess),
-          backgroundColor: AppColor.success,
-        ),
-      );
+      AppSnackBar.success(context, context.strings.registerSuccess);
       context.read<NavigationProvider>().goToLogin();
       return;
     }
     if (state is BaseResultStateError<void>) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(state.errorMessage),
-          backgroundColor: AppColor.error,
-        ),
-      );
+      AppSnackBar.error(context, state.errorMessage);
     }
   }
 

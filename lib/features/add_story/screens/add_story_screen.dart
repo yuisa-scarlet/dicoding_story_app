@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../../../core/app_route.dart';
 import '../../../core/base_result_state.dart';
 import '../../../shared/localization/app_strings.dart';
+import '../../../shared/widgets/app_snack_bar.dart';
 import '../../../shared/widgets/story_bottom_navigation.dart';
 import '../../home/providers/story_list/story_list_provider.dart';
 import '../providers/add_story_provider.dart';
@@ -51,16 +52,12 @@ class _AddStoryScreenState extends State<AddStoryScreen> {
             forceRefresh: true,
           );
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(context.strings.uploadSuccess)),
-      );
+      AppSnackBar.success(context, context.strings.uploadSuccess);
       context.read<NavigationProvider>().goToHome();
       return;
     }
     if (state is BaseResultStateError) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(state.errorMessage)),
-      );
+      AppSnackBar.error(context, state.errorMessage);
     }
   }
 

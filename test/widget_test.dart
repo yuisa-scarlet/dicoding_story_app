@@ -6,9 +6,8 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lilian_flutter_starter/core/app.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'package:lilian_flutter_starter/main.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +16,7 @@ void main() {
   testWidgets('shows Story App login screen on startup', (
     WidgetTester tester,
   ) async {
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const StoryApp());
     await tester.pumpAndSettle();
 
     expect(find.text('Story App'), findsWidgets);

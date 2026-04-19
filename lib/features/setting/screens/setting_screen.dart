@@ -5,6 +5,7 @@ import '../../auth/providers/auth_provider.dart';
 import '../../../shared/localization/app_strings.dart';
 import '../../../shared/providers/locale_provider.dart';
 import '../../../shared/theme/app_color.dart';
+import '../../../shared/widgets/app_snack_bar.dart';
 import '../../../shared/widgets/story_bottom_navigation.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -89,11 +90,9 @@ class SettingScreen extends StatelessWidget {
                   onPressed: () async {
                     await authProvider.logout();
                     if (context.mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(AppStrings.of(context).logoutSuccess),
-                          backgroundColor: AppColor.success,
-                        ),
+                      AppSnackBar.success(
+                        context,
+                        AppStrings.of(context).logoutSuccess,
                       );
                     }
                     // Navigation to login is handled automatically by AppRouterDelegate

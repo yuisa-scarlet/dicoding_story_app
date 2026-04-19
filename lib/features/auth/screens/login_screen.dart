@@ -6,6 +6,7 @@ import '../../../core/base_result_state.dart';
 import '../../../shared/localization/app_strings.dart';
 import '../../../shared/model/user.dart';
 import '../../../shared/theme/app_color.dart';
+import '../../../shared/widgets/app_snack_bar.dart';
 import '../../../shared/widgets/rounded_text_field.dart';
 import '../providers/auth_provider.dart';
 
@@ -43,19 +44,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
     final state = authProvider.loginState;
     if (state is BaseResultStateSuccess<UserSession>) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(context.strings.loginSuccess),
-          backgroundColor: AppColor.success,
-        ),
-      );
+      AppSnackBar.success(context, context.strings.loginSuccess);
     } else if (state is BaseResultStateError<UserSession>) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(state.errorMessage),
-          backgroundColor: AppColor.error,
-        ),
-      );
+      AppSnackBar.error(context, state.errorMessage);
     }
     // Navigation to home is handled automatically by AppRouterDelegate
   }
