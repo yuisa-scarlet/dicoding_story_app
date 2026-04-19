@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lilian_cached_network_image/lilian_cached_network_image.dart';
 
 import '../../../shared/model/story.dart';
 import '../../../shared/theme/app_color.dart';
@@ -88,21 +89,20 @@ class StoryCard extends StatelessWidget {
               ),
               child: AspectRatio(
                 aspectRatio: 16 / 9,
-                child: Image.network(
-                  story.photoUrl,
+                child: LilianCachedNetworkImage(
+                  imageUrl: story.photoUrl,
                   fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const ColoredBox(
-                      color: Color(0xFFF3F4F6),
-                      child: Center(
-                        child: Icon(
-                          Icons.broken_image_outlined,
-                          size: 48,
-                          color: AppColor.disabled,
-                        ),
+                  useShimmer: true,
+                  errorBuilder: (context, error, stackTrace) => const ColoredBox(
+                    color: Color(0xFFF3F4F6),
+                    child: Center(
+                      child: Icon(
+                        Icons.broken_image_outlined,
+                        size: 48,
+                        color: AppColor.disabled,
                       ),
-                    );
-                  },
+                    ),
+                  ),
                 ),
               ),
             ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lilian_cached_network_image/lilian_cached_network_image.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/base_result_state.dart';
 import '../../../shared/model/story.dart';
+import '../../../shared/theme/app_color.dart';
 import '../providers/story_detail/story_detail_provider.dart';
 
 class HomeDetailScreen extends StatefulWidget {
@@ -52,15 +54,20 @@ class _HomeDetailScreenState extends State<HomeDetailScreen> {
               children: [
                 AspectRatio(
                   aspectRatio: 16 / 9,
-                  child: Image.network(
-                    story.photoUrl,
+                  child: LilianCachedNetworkImage(
+                    imageUrl: story.photoUrl,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return const ColoredBox(
-                        color: Color(0xFFE0E0E0),
-                        child: Icon(Icons.broken_image_outlined, size: 48),
-                      );
-                    },
+                    useShimmer: true,
+                    errorBuilder: (context, error, stackTrace) => const ColoredBox(
+                      color: Color(0xFFF3F4F6),
+                      child: Center(
+                        child: Icon(
+                          Icons.broken_image_outlined,
+                          size: 48,
+                          color: AppColor.disabled,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(
