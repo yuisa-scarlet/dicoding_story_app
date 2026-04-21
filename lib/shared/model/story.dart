@@ -1,5 +1,9 @@
 import 'package:intl/intl.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'story.g.dart';
+
+@JsonSerializable()
 class StoryModel {
   const StoryModel({
     required this.id,
@@ -11,26 +15,25 @@ class StoryModel {
     this.lon,
   });
 
+  @JsonKey(defaultValue: '')
   final String id;
+  @JsonKey(defaultValue: '-')
   final String name;
+  @JsonKey(defaultValue: '-')
   final String description;
+  @JsonKey(defaultValue: '')
   final String photoUrl;
+  @JsonKey(fromJson: _parseDateTime)
   final DateTime createdAt;
+  @JsonKey(fromJson: _parseDouble)
   final double? lat;
+  @JsonKey(fromJson: _parseDouble)
   final double? lon;
 
-  factory StoryModel.fromJson(Map<String, dynamic> json) {
-    return StoryModel(
-      id: json['id'] as String? ?? '',
-      name: json['name'] as String? ?? '-',
-      description: json['description'] as String? ?? '-',
-      photoUrl: json['photoUrl'] as String? ?? '',
-      createdAt: DateTime.tryParse(json['createdAt'] as String? ?? '') ??
-          DateTime.now(),
-      lat: _parseDouble(json['lat']),
-      lon: _parseDouble(json['lon']),
-    );
-  }
+  factory StoryModel.fromJson(Map<String, dynamic> json) =>
+      _$StoryModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$StoryModelToJson(this);
 
   static double? _parseDouble(dynamic value) {
     if (value == null) {
@@ -44,5 +47,12 @@ class StoryModel {
 
   String get formattedCreatedAt {
     return DateFormat.yMMMd().add_Hm().format(createdAt.toLocal());
+  }
+
+  static DateTime _parseDateTime(dynamic value) {
+    if (value == null) {
+      return DateTime.now();
+    }
+    return DateTime.tryParse(value.toString()) ?? DateTime.now();
   }
 }

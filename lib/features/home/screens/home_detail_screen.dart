@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:lilian_cached_network_image/lilian_cached_network_image.dart';
 import 'package:provider/provider.dart';
 
+import '../../../core/config.dart';
 import '../../../core/base_result_state.dart';
 import '../../../shared/model/story.dart';
 import '../../../shared/theme/app_color.dart';
 import '../providers/story_detail/story_detail_provider.dart';
+import '../widgets/story_location_view.dart';
 
 class HomeDetailScreen extends StatefulWidget {
   const HomeDetailScreen({required this.storyId, super.key});
@@ -60,15 +62,15 @@ class _HomeDetailScreenState extends State<HomeDetailScreen> {
                     useShimmer: true,
                     errorBuilder: (context, error, stackTrace) =>
                         const ColoredBox(
-                      color: Color(0xFFF3F4F6),
-                      child: Center(
-                        child: Icon(
-                          Icons.broken_image_outlined,
-                          size: 48,
-                          color: AppColor.disabled,
+                          color: Color(0xFFF3F4F6),
+                          child: Center(
+                            child: Icon(
+                              Icons.broken_image_outlined,
+                              size: 48,
+                              color: AppColor.disabled,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
                   ),
                 ),
                 Padding(
@@ -84,10 +86,14 @@ class _HomeDetailScreenState extends State<HomeDetailScreen> {
                       Text(story.formattedCreatedAt),
                       const SizedBox(height: 16),
                       Text(story.description),
-                      if (story.lat != null && story.lon != null) ...[
+                      if (AppConfig.canUseMap &&
+                          story.lat != null &&
+                          story.lon != null) ...[
                         const SizedBox(height: 16),
-                        Text('Lat: ${story.lat}'),
-                        Text('Lon: ${story.lon}'),
+                        StoryLocationView(
+                          latitude: story.lat!,
+                          longitude: story.lon!,
+                        ),
                       ],
                     ],
                   ),

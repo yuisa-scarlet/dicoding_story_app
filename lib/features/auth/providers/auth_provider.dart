@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/api_client.dart';
 import '../../../core/base_result_state.dart';
 import '../../../core/config.dart';
+import '../../../shared/model/api_response.dart';
 import '../../../shared/model/user.dart';
 
 class AuthProvider extends ChangeNotifier {
@@ -48,15 +49,26 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final response = await _apiClient.post(
-        '/register',
-        body: jsonEncode({'name': name, 'email': email, 'password': password}),
-        headers: {'Content-Type': 'application/json'},
-      ).timeout(AppConfig.requestTimeout);
+      final response = await _apiClient
+          .post(
+            '/register',
+            body: jsonEncode({
+              'name': name,
+              'email': email,
+              'password': password,
+            }),
+            headers: {'Content-Type': 'application/json'},
+          )
+          .timeout(AppConfig.requestTimeout);
 
       final decoded = jsonDecode(response.body) as Map<String, dynamic>;
-      if (response.statusCode >= 400 || decoded['error'] == true) {
-        throw Exception(decoded['message'] ?? 'Registration failed');
+      final apiResponse = BasicResponse.fromJson(decoded);
+      if (response.statusCode >= 400 || apiResponse.error) {
+        throw Exception(
+          apiResponse.message.isNotEmpty
+              ? apiResponse.message
+              : 'Registration failed',
+        );
       }
 
       _registerState = const BaseResultStateSuccess<void>(null);
@@ -78,19 +90,26 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final response = await _apiClient.post(
-        '/login',
-        body: jsonEncode({'email': email, 'password': password}),
-        headers: {'Content-Type': 'application/json'},
-      ).timeout(AppConfig.requestTimeout);
+      final response = await _apiClient
+          .post(
+            '/login',
+            body: jsonEncode({'email': email, 'password': password}),
+            headers: {'Content-Type': 'application/json'},
+          )
+          .timeout(AppConfig.requestTimeout);
 
       final decoded = jsonDecode(response.body) as Map<String, dynamic>;
-      if (response.statusCode >= 400 || decoded['error'] == true) {
-        throw Exception(decoded['message'] ?? 'Login failed');
+      final apiResponse = LoginResponse.fromJson(decoded);
+      if (response.statusCode >= 400 || apiResponse.error) {
+        throw Exception(
+          apiResponse.message.isNotEmpty ? apiResponse.message : 'Login failed',
+        );
       }
 
-      final loginResult = decoded['loginResult'] as Map<String, dynamic>? ?? {};
-      final session = UserSession.fromJson(loginResult);
+      final session = apiResponse.loginResult;
+      if (session == null || session.token.isEmpty) {
+        throw Exception('Invalid login response');
+      }
 
       _session = session;
       _loginState = BaseResultStateSuccess<UserSession>(session);

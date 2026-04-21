@@ -46,3 +46,7 @@ app.*.map.json
 
 # FVM Version Cache
 .fvm/
+
+# Local maps API keys
+/android/keys.properties
+/ios/Flutter/MapsKeys.local.xcconfig

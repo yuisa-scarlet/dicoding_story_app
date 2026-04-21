@@ -36,10 +36,10 @@ class _LoginFormState extends State<LoginForm> {
           Text(
             strings.loginTitle,
             style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: AppColor.textDark,
-                  height: 1.2,
-                ),
+              fontWeight: FontWeight.bold,
+              color: AppColor.textDark,
+              height: 1.2,
+            ),
           ),
           const SizedBox(height: 40),
           RoundedTextField(
@@ -91,10 +91,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
               Text(
                 strings.rememberMe,
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: AppColor.textBody,
-                ),
+                style: const TextStyle(fontSize: 14, color: AppColor.textBody),
               ),
             ],
           ),
@@ -141,10 +138,7 @@ class _LoginFormState extends State<LoginForm> {
             children: [
               Text(
                 strings.noAccount,
-                style: const TextStyle(
-                  color: AppColor.textMuted,
-                  fontSize: 14,
-                ),
+                style: const TextStyle(color: AppColor.textMuted, fontSize: 14),
               ),
               TextButton(
                 onPressed: _c.goToRegister,

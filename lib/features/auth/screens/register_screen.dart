@@ -16,10 +16,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = RegisterController(
-      context: context,
-      isMounted: () => mounted,
-    );
+    _controller = RegisterController(context: context);
   }
 
   @override

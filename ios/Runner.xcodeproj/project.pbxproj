@@ -48,6 +48,12 @@
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
+		801A7A97DA6149BD9D0F1101 /* Debug-free.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Debug-free.xcconfig"; path = "Flutter/Debug-free.xcconfig"; sourceTree = "<group>"; };
+		801A7A97DA6149BD9D0F1102 /* Release-free.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Release-free.xcconfig"; path = "Flutter/Release-free.xcconfig"; sourceTree = "<group>"; };
+		801A7A97DA6149BD9D0F1103 /* Profile-free.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Profile-free.xcconfig"; path = "Flutter/Profile-free.xcconfig"; sourceTree = "<group>"; };
+		801A7A97DA6149BD9D0F1104 /* Debug-paid.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Debug-paid.xcconfig"; path = "Flutter/Debug-paid.xcconfig"; sourceTree = "<group>"; };
+		801A7A97DA6149BD9D0F1105 /* Release-paid.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Release-paid.xcconfig"; path = "Flutter/Release-paid.xcconfig"; sourceTree = "<group>"; };
+		801A7A97DA6149BD9D0F1106 /* Profile-paid.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Profile-paid.xcconfig"; path = "Flutter/Profile-paid.xcconfig"; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +88,12 @@
 				3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */,
 				9740EEB21CF90195004384FC /* Debug.xcconfig */,
 				7AFA3C8E1D35360C0083082E /* Release.xcconfig */,
+				801A7A97DA6149BD9D0F1101 /* Debug-free.xcconfig */,
+				801A7A97DA6149BD9D0F1102 /* Release-free.xcconfig */,
+				801A7A97DA6149BD9D0F1103 /* Profile-free.xcconfig */,
+				801A7A97DA6149BD9D0F1104 /* Debug-paid.xcconfig */,
+				801A7A97DA6149BD9D0F1105 /* Release-paid.xcconfig */,
+				801A7A97DA6149BD9D0F1106 /* Profile-paid.xcconfig */,
 				9740EEB31CF90195004384FC /* Generated.xcconfig */,
 			);
 			name = Flutter;
@@ -577,6 +589,200 @@
 			};
 			name = Release;
 		};
+		801A7A97DA6149BD9D0F2001 /* Debug-free */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 801A7A97DA6149BD9D0F1101 /* Debug-free.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Debug-free";
+		};
+		801A7A97DA6149BD9D0F2002 /* Release-free */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 801A7A97DA6149BD9D0F1102 /* Release-free.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Release-free";
+		};
+		801A7A97DA6149BD9D0F2003 /* Profile-free */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 801A7A97DA6149BD9D0F1103 /* Profile-free.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Profile-free";
+		};
+		801A7A97DA6149BD9D0F2004 /* Debug-paid */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 801A7A97DA6149BD9D0F1104 /* Debug-paid.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Debug-paid";
+		};
+		801A7A97DA6149BD9D0F2005 /* Release-paid */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 801A7A97DA6149BD9D0F1105 /* Release-paid.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Release-paid";
+		};
+		801A7A97DA6149BD9D0F2006 /* Profile-paid */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 801A7A97DA6149BD9D0F1106 /* Profile-paid.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Profile-paid";
+		};
+		801A7A97DA6149BD9D0F3001 /* Debug-free */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 801A7A97DA6149BD9D0F1101 /* Debug-free.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Runner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.lilianFlutterStarter.free;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-free";
+		};
+		801A7A97DA6149BD9D0F3002 /* Release-free */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 801A7A97DA6149BD9D0F1102 /* Release-free.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Runner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.lilianFlutterStarter.free;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-free";
+		};
+		801A7A97DA6149BD9D0F3003 /* Profile-free */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 801A7A97DA6149BD9D0F1103 /* Profile-free.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Runner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.lilianFlutterStarter.free;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-free";
+		};
+		801A7A97DA6149BD9D0F3004 /* Debug-paid */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 801A7A97DA6149BD9D0F1104 /* Debug-paid.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Runner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.lilianFlutterStarter.paid;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-paid";
+		};
+		801A7A97DA6149BD9D0F3005 /* Release-paid */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 801A7A97DA6149BD9D0F1105 /* Release-paid.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Runner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.lilianFlutterStarter.paid;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-paid";
+		};
+		801A7A97DA6149BD9D0F3006 /* Profile-paid */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 801A7A97DA6149BD9D0F1106 /* Profile-paid.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Runner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.lilianFlutterStarter.paid;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-paid";
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -596,6 +802,12 @@
 				97C147031CF9000F007C117D /* Debug */,
 				97C147041CF9000F007C117D /* Release */,
 				249021D3217E4FDB00AE95B9 /* Profile */,
+				801A7A97DA6149BD9D0F2001 /* Debug-free */,
+				801A7A97DA6149BD9D0F2002 /* Release-free */,
+				801A7A97DA6149BD9D0F2003 /* Profile-free */,
+				801A7A97DA6149BD9D0F2004 /* Debug-paid */,
+				801A7A97DA6149BD9D0F2005 /* Release-paid */,
+				801A7A97DA6149BD9D0F2006 /* Profile-paid */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -606,6 +818,12 @@
 				97C147061CF9000F007C117D /* Debug */,
 				97C147071CF9000F007C117D /* Release */,
 				249021D4217E4FDB00AE95B9 /* Profile */,
+				801A7A97DA6149BD9D0F3001 /* Debug-free */,
+				801A7A97DA6149BD9D0F3002 /* Release-free */,
+				801A7A97DA6149BD9D0F3003 /* Profile-free */,
+				801A7A97DA6149BD9D0F3004 /* Debug-paid */,
+				801A7A97DA6149BD9D0F3005 /* Release-paid */,
+				801A7A97DA6149BD9D0F3006 /* Profile-paid */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

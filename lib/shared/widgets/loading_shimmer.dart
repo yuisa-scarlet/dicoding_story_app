@@ -29,9 +29,10 @@ class LoadingShimmer extends StatelessWidget {
                       Container(height: 12, width: 200, color: Colors.white),
                       const SizedBox(height: 8),
                       Container(
-                          height: 12,
-                          width: double.infinity,
-                          color: Colors.white),
+                        height: 12,
+                        width: double.infinity,
+                        color: Colors.white,
+                      ),
                     ],
                   ),
                 ),

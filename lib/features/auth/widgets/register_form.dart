@@ -41,18 +41,15 @@ class _RegisterFormState extends State<RegisterForm> {
           Text(
             strings.createAccount,
             style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: AppColor.textDark,
-                  height: 1.2,
-                ),
+              fontWeight: FontWeight.bold,
+              color: AppColor.textDark,
+              height: 1.2,
+            ),
           ),
           const SizedBox(height: 8),
           Text(
             strings.registerSubtitle,
-            style: const TextStyle(
-              color: AppColor.textMuted,
-              fontSize: 14,
-            ),
+            style: const TextStyle(color: AppColor.textMuted, fontSize: 14),
           ),
           const SizedBox(height: 40),
           RoundedTextField(
@@ -145,10 +142,7 @@ class _RegisterFormState extends State<RegisterForm> {
             children: [
               Text(
                 strings.haveAccount,
-                style: const TextStyle(
-                  color: AppColor.textMuted,
-                  fontSize: 14,
-                ),
+                style: const TextStyle(color: AppColor.textMuted, fontSize: 14),
               ),
               TextButton(
                 onPressed: _c.goToLogin,

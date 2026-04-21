@@ -111,9 +111,9 @@ class AppRouterDelegate extends RouterDelegate<AppRoutePath>
   AppRouterDelegate({
     required AuthProvider authProvider,
     required NavigationProvider navigationProvider,
-  })  : _authProvider = authProvider,
-        _navigationProvider = navigationProvider,
-        _wasLoggedIn = authProvider.isLoggedIn {
+  }) : _authProvider = authProvider,
+       _navigationProvider = navigationProvider,
+       _wasLoggedIn = authProvider.isLoggedIn {
     _authProvider.addListener(_onAuthChanged);
     _navigationProvider.addListener(notifyListeners);
   }
@@ -209,10 +209,7 @@ class AppRouterDelegate extends RouterDelegate<AppRoutePath>
       pages.add(
         isLoggedIn
             ? const MaterialPage(key: ValueKey('home'), child: HomeScreen())
-            : const MaterialPage(
-                key: ValueKey('login'),
-                child: LoginScreen(),
-              ),
+            : const MaterialPage(key: ValueKey('login'), child: LoginScreen()),
       );
     }
 

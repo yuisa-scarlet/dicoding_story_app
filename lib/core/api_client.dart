@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
@@ -29,7 +30,7 @@ class ApiInterceptor extends http.BaseClient {
     log(responseBody, name: responseName);
 
     return http.StreamedResponse(
-      Stream.value(responseBody.codeUnits),
+      Stream.value(utf8.encode(responseBody)),
       response.statusCode,
       headers: response.headers,
       request: request,
@@ -87,7 +88,7 @@ class ApiClient {
   String? _token;
 
   ApiClient({required String baseUrl})
-      : _client = BaseApiClient._createClient(baseUrl);
+    : _client = BaseApiClient._createClient(baseUrl);
 
   void setToken(String? token) {
     _token = (token != null && token.isNotEmpty) ? token : null;

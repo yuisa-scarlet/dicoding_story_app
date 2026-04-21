@@ -31,11 +31,8 @@ class AppStrings {
   }
 
   String get appTitle => _value('Story App', 'Story App', 'ストーリーアプリ');
-  String get loginTitle => _value(
-        'Login to your\nAccount',
-        'Masuk ke\nAkunmu',
-        'アカウントに\nログイン',
-      );
+  String get loginTitle =>
+      _value('Login to your\nAccount', 'Masuk ke\nAkunmu', 'アカウントに\nログイン');
   String get signIn => _value('Sign In', 'Masuk', 'ログイン');
   String get forgotPassword =>
       _value('Forgot the password?', 'Lupa kata sandi?', 'パスワードをお忘れですか？');
@@ -51,78 +48,129 @@ class AppStrings {
   String get description => _value('Description', 'Deskripsi', '説明');
   String get selectImage => _value('Select Image', 'Pilih Gambar', '画像を選択');
   String get uploadStory => _value('Upload Story', 'Unggah Cerita', 'ストーリーを送信');
+  String get uploading => _value('Uploading...', 'Mengunggah...', '送信中...');
   String get logout => _value('Logout', 'Keluar', 'ログアウト');
   String get retry => _value('Retry', 'Coba Lagi', '再試行');
   String get noStories => _value(
-      'No stories available yet.', 'Belum ada cerita.', 'まだストーリーがありません。');
+    'No stories available yet.',
+    'Belum ada cerita.',
+    'まだストーリーがありません。',
+  );
   String get language => _value('Language', 'Bahasa', '言語');
   String get english => _value('English', 'Inggris', '英語');
   String get indonesian => _value('Indonesian', 'Indonesia', 'インドネシア語');
   String get japanese => _value('Japanese', 'Jepang', '日本語');
   String get latitude => _value('Latitude', 'Latitude', '緯度');
   String get longitude => _value('Longitude', 'Longitude', '経度');
+  String get location => _value('Location', 'Lokasi', '位置');
   String get choosePhotoFirst => _value(
-        'Please choose a photo first.',
-        'Silakan pilih foto terlebih dahulu.',
-        '最初に写真を選択してください。',
-      );
+    'Please choose a photo first.',
+    'Silakan pilih foto terlebih dahulu.',
+    '最初に写真を選択してください。',
+  );
   String get uploadSuccess => _value(
-        'Story uploaded successfully.',
-        'Cerita berhasil diunggah.',
-        'ストーリーの送信に成功しました。',
-      );
+    'Story uploaded successfully.',
+    'Cerita berhasil diunggah.',
+    'ストーリーの送信に成功しました。',
+  );
   String get loginSuccess => _value(
-        'Login successful. Welcome back!',
-        'Login berhasil. Selamat datang kembali!',
-        'ログインに成功しました。おかえりなさい！',
-      );
+    'Login successful. Welcome back!',
+    'Login berhasil. Selamat datang kembali!',
+    'ログインに成功しました。おかえりなさい！',
+  );
   String get registerSuccess => _value(
-        'Account created. Please login.',
-        'Akun berhasil dibuat. Silakan masuk.',
-        'アカウントを作成しました。ログインしてください。',
-      );
-  String get logoutSuccess => _value(
-        'Logged out successfully.',
-        'Berhasil keluar.',
-        'ログアウトしました。',
-      );
+    'Account created. Please login.',
+    'Akun berhasil dibuat. Silakan masuk.',
+    'アカウントを作成しました。ログインしてください。',
+  );
+  String get logoutSuccess =>
+      _value('Logged out successfully.', 'Berhasil keluar.', 'ログアウトしました。');
   String get sessionExpired => _value(
-        'Session expired. Please login again.',
-        'Sesi habis. Silakan login kembali.',
-        'セッションの有効期限が切れました。再度ログインしてください。',
-      );
+    'Session expired. Please login again.',
+    'Sesi habis. Silakan login kembali.',
+    'セッションの有効期限が切れました。再度ログインしてください。',
+  );
   String get createAccount => _value('Create account', 'Buat akun', 'アカウント作成');
   String get welcomeBack =>
       _value('Welcome back', 'Selamat datang kembali', 'おかえりなさい');
   String get loginSubtitle => _value(
-        'Sign in to continue sharing your learning moments.',
-        'Masuk untuk melanjutkan berbagi momen belajarmu.',
-        '学習の瞬間を共有するためにログインしてください。',
-      );
+    'Sign in to continue sharing your learning moments.',
+    'Masuk untuk melanjutkan berbagi momen belajarmu.',
+    '学習の瞬間を共有するためにログインしてください。',
+  );
   String get registerSubtitle => _value(
-        'Create a new account to start posting stories.',
-        'Buat akun baru untuk mulai mengunggah cerita.',
-        '新しいアカウントを作成してストーリーを投稿しましょう。',
-      );
-  String get haveAccount =>
-      _value('Already have an account?', 'Sudah punya akun?', 'アカウントをお持ちですか？');
+    'Create a new account to start posting stories.',
+    'Buat akun baru untuk mulai mengunggah cerita.',
+    '新しいアカウントを作成してストーリーを投稿しましょう。',
+  );
+  String get haveAccount => _value(
+    'Already have an account?',
+    'Sudah punya akun?',
+    'すでにアカウントをお持ちですか？',
+  );
   String get noAccount => _value(
-        'Don\'t have an account?',
-        'Belum punya akun?',
-        'アカウントをお持ちではありませんか？',
-      );
-  String get requiredField => _value(
-        'This field is required.',
-        'Kolom ini wajib diisi.',
-        'この項目は必須です。',
-      );
+    'Don\'t have an account?',
+    'Belum punya akun?',
+    'アカウントをお持ちではありませんか？',
+  );
+  String get requiredField =>
+      _value('This field is required.', 'Kolom ini wajib diisi.', 'この項目は必須です。');
   String get invalidEmail =>
       _value('Invalid email.', 'Email tidak valid.', 'メールアドレスが無効です。');
   String get passwordTooShort => _value(
-        'Password must be at least 8 characters.',
-        'Password minimal 8 karakter.',
-        'パスワードは8文字以上必要です。',
-      );
+    'Password must be at least 8 characters.',
+    'Password minimal 8 karakter.',
+    'パスワードは8文字以上必要です。',
+  );
+  String get pickLocation =>
+      _value('Pick Location (Paid)', 'Pilih Lokasi (Paid)', '位置を選択（有料版）');
+  String get tapMapToPickLocation => _value(
+    'Tap map to choose a location.',
+    'Ketuk peta untuk memilih lokasi.',
+    '地図をタップして位置を選択します。',
+  );
+  String get selectedLocationTitle =>
+      _value('Selected Location', 'Lokasi Terpilih', '選択した位置');
+  String get resolvingAddress =>
+      _value('Resolving address...', 'Mencari alamat...', '住所を取得中...');
+  String get addressLookupFailed => _value(
+    'Address lookup failed.',
+    'Alamat tidak ditemukan.',
+    '住所の取得に失敗しました。',
+  );
+  String addressLookupFailedWithCoord(String coordinate) => _value(
+    'Address lookup failed. Coordinate: $coordinate',
+    'Alamat tidak ditemukan. Koordinat: $coordinate',
+    '住所の取得に失敗しました。座標: $coordinate',
+  );
+  String get mapPreviewPlaceholder =>
+      _value('Map preview', 'Pratinjau peta', '地図プレビュー');
+  String get tapMarkerForAddress => _value(
+    'Tap marker to show address.',
+    'Ketuk marker untuk menampilkan alamat.',
+    'マーカーをタップすると住所が表示されます。',
+  );
+
+  String get useCurrentLocation =>
+      _value('Use Current Location', 'Gunakan Lokasi Saat Ini', '現在地を使用');
+  String get fetchingLocation =>
+      _value('Fetching location...', 'Mengambil lokasi...', '位置情報を取得中...');
+  String get locationPermissionDenied => _value(
+    'Location permission denied.',
+    'Izin lokasi ditolak.',
+    '位置情報の権限が拒否されました。',
+  );
+  String get locationPermissionPermanentlyDenied => _value(
+    'Location permission permanently denied. Please enable it in Settings.',
+    'Izin lokasi ditolak permanen. Aktifkan di Pengaturan.',
+    '位置情報の権限が永久に拒否されました。設定で有効にしてください。',
+  );
+  String get locationServiceDisabled => _value(
+    'Location service is disabled. Please enable it.',
+    'Layanan lokasi nonaktif. Aktifkan terlebih dahulu.',
+    '位置情報サービスが無効です。有効にしてください。',
+  );
+
   String storyBy(String name) => _value('By $name', 'Oleh $name', '$name さん');
 }
 

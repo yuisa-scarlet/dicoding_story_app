@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import '../../../../core/api_client.dart';
 import '../../../../core/base_result_state.dart';
 import '../../../../core/config.dart';
+import '../../../../shared/model/api_response.dart';
 import '../../../../shared/model/story.dart';
 
 class StoryDetailProvider extends ChangeNotifier {
@@ -28,19 +29,23 @@ class StoryDetailProvider extends ChangeNotifier {
           .timeout(AppConfig.requestTimeout);
 
       final decoded = jsonDecode(response.body) as Map<String, dynamic>;
-      if (response.statusCode >= 400 || decoded['error'] == true) {
-        throw Exception(decoded['message'] ?? 'Failed to load story');
+      final apiResponse = StoryDetailResponse.fromJson(decoded);
+      if (response.statusCode >= 400 || apiResponse.error) {
+        throw Exception(
+          apiResponse.message.isNotEmpty
+              ? apiResponse.message
+              : 'Failed to load story',
+        );
       }
 
-      final story = StoryModel.fromJson(
-        decoded['story'] as Map<String, dynamic>? ?? {},
-      );
+      final story = apiResponse.story;
+      if (story == null) {
+        throw Exception('Story not found');
+      }
 
       _state = BaseResultStateSuccess<StoryModel>(story);
     } on SocketException {
-      _state = const BaseResultStateError<StoryModel>(
-        'No internet connection',
-      );
+      _state = const BaseResultStateError<StoryModel>('No internet connection');
     } catch (e) {
       _state = BaseResultStateError<StoryModel>(
         e.toString().replaceFirst('Exception: ', ''),

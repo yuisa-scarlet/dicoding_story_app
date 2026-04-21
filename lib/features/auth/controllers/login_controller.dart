@@ -9,17 +9,13 @@ import '../../../shared/widgets/app_snack_bar.dart';
 import '../providers/auth_provider.dart';
 
 class LoginController {
-  LoginController({
-    required this.context,
-    required this.isMounted,
-  }) {
+  LoginController({required this.context}) {
     formKey = GlobalKey<FormState>();
     emailController = TextEditingController();
     passwordController = TextEditingController();
   }
 
   final BuildContext context;
-  final bool Function() isMounted;
 
   late final GlobalKey<FormState> formKey;
   late final TextEditingController emailController;
@@ -34,16 +30,17 @@ class LoginController {
     if (!formKey.currentState!.validate()) return;
 
     final authProvider = context.read<AuthProvider>();
+    final strings = context.strings;
     await authProvider.login(
       email: emailController.text.trim(),
       password: passwordController.text,
     );
 
-    if (!isMounted()) return;
+    if (!context.mounted) return;
 
     final state = authProvider.loginState;
     if (state is BaseResultStateSuccess<UserSession>) {
-      AppSnackBar.success(context, context.strings.loginSuccess);
+      AppSnackBar.success(context, strings.loginSuccess);
     } else if (state is BaseResultStateError<UserSession>) {
       AppSnackBar.error(context, state.errorMessage);
     }

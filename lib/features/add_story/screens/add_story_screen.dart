@@ -17,10 +17,7 @@ class _AddStoryScreenState extends State<AddStoryScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = AddStoryController(
-      context: context,
-      isMounted: () => mounted,
-    );
+    _controller = AddStoryController(context: context);
   }
 
   @override

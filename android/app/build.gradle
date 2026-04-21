@@ -5,6 +5,23 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
 }
 
+def mapsKeys = new Properties()
+def mapsKeysFile = rootProject.file("keys.properties")
+if (mapsKeysFile.exists()) {
+    mapsKeysFile.withInputStream { mapsKeys.load(it) }
+}
+
+def freeMapsApiKey =
+        mapsKeys.getProperty("FREE_GOOGLE_MAPS_API_KEY")
+                ?: project.findProperty("FREE_GOOGLE_MAPS_API_KEY")
+                ?: System.getenv("FREE_GOOGLE_MAPS_API_KEY")
+                ?: ""
+def paidMapsApiKey =
+        mapsKeys.getProperty("PAID_GOOGLE_MAPS_API_KEY")
+                ?: project.findProperty("PAID_GOOGLE_MAPS_API_KEY")
+                ?: System.getenv("PAID_GOOGLE_MAPS_API_KEY")
+                ?: ""
+
 android {
     namespace = "com.example.lilian_flutter_starter"
     compileSdk = flutter.compileSdkVersion
@@ -28,6 +45,28 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+    }
+
+    flavorDimensions += ["tier"]
+    productFlavors {
+        free {
+            dimension "tier"
+            applicationIdSuffix ".free"
+            versionNameSuffix "-free"
+            manifestPlaceholders = [
+                    appName: "Story App Free",
+                    googleMapsApiKey: freeMapsApiKey
+            ]
+        }
+        paid {
+            dimension "tier"
+            applicationIdSuffix ".paid"
+            versionNameSuffix "-paid"
+            manifestPlaceholders = [
+                    appName: "Story App Paid",
+                    googleMapsApiKey: paidMapsApiKey
+            ]
+        }
     }
 
     buildTypes {

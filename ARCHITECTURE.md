@@ -84,3 +84,23 @@ Phase 1:
 5. Setelah mengunggah cerita, aplikasi beralih menampilkan halaman utama dan menampilkan item baru di daftar cerita paling atas (refresh).
 
 6. Terdapat pengaturan untuk localization (multi bahasa). Bahasa Indonesia, Jepang, dan Inggris.
+
+7. Menampilkan Peta
+- Menampilkan halaman detail dengan peta apabila cerita memiliki lokasi dengan benar.
+- Menambahkan fitur pilih lokasi melalui peta ketika menambahkan cerita baru.
+- Beri informasi alamat ketika marker ditekan.
+
+8. Infinite Scrolling Pagination
+- Menampilkan daftar cerita menggunakan Pagination dengan benar.
+
+9. Code Generation
+- Menerapkan Code Generation pada seluruh kelas objek. 
+
+10. Menambahkan Build Variant pada aplikasi.
+- Minimal aplikasi dibagi menjadi dua jenis, free (gratis) dan paid (berbayar).
+- Jenis Free tidak dapat menambahkan lokasi saat menambahkan cerita, sedangkan jenis Paid bisa.
+
+11. Menampilkan animation widget, seperti implicit animation, explicit animation, atau custom painter.
+
+## Running Apps
+

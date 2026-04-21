@@ -6,10 +6,7 @@ import '../localization/app_strings.dart';
 import '../theme/app_color.dart';
 
 class StoryBottomNavigation extends StatelessWidget {
-  const StoryBottomNavigation({
-    required this.currentIndex,
-    super.key,
-  });
+  const StoryBottomNavigation({required this.currentIndex, super.key});
 
   final int currentIndex;
 

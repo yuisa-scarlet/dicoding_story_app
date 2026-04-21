@@ -35,9 +35,9 @@ class SettingScreen extends StatelessWidget {
           Text(
             strings.language,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: AppColor.textDark,
-                  fontWeight: FontWeight.w600,
-                ),
+              color: AppColor.textDark,
+              fontWeight: FontWeight.w600,
+            ),
           ),
           const SizedBox(height: 8),
           Consumer<LocaleProvider>(
@@ -58,8 +58,9 @@ class SettingScreen extends StatelessWidget {
                     label,
                     style: TextStyle(
                       color: isActive ? AppColor.primary : AppColor.textBody,
-                      fontWeight:
-                          isActive ? FontWeight.w600 : FontWeight.normal,
+                      fontWeight: isActive
+                          ? FontWeight.w600
+                          : FontWeight.normal,
                     ),
                   ),
                   onTap: () => localeProvider.setLocale(Locale(code)),

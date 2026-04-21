@@ -1,0 +1,9 @@
+#include "Debug.xcconfig"
+#include? "MapsKeys.local.xcconfig"
+
+APP_FLAVOR=free
+APP_DISPLAY_NAME=Story App Free
+FLUTTER_TARGET=lib/main_free.dart
+PRODUCT_BUNDLE_IDENTIFIER=com.example.lilianFlutterStarter.free
+GOOGLE_MAPS_API_KEY=$(FREE_GOOGLE_MAPS_API_KEY)
+

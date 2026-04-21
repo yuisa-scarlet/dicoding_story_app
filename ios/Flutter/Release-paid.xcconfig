@@ -1,0 +1,9 @@
+#include "Release.xcconfig"
+#include? "MapsKeys.local.xcconfig"
+
+APP_FLAVOR=paid
+APP_DISPLAY_NAME=Story App Paid
+FLUTTER_TARGET=lib/main_paid.dart
+PRODUCT_BUNDLE_IDENTIFIER=com.example.lilianFlutterStarter.paid
+GOOGLE_MAPS_API_KEY=$(PAID_GOOGLE_MAPS_API_KEY)
+

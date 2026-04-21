@@ -16,10 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = LoginController(
-      context: context,
-      isMounted: () => mounted,
-    );
+    _controller = LoginController(context: context);
   }
 
   @override

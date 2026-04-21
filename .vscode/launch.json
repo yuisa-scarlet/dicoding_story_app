@@ -1,25 +1,71 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "flutter_dicoding_story",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "flutter_dicoding_story (profile mode)",
+            "name": "Story App (free, debug)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "flutterMode": "debug",
+            "program": "lib/main_free.dart",
+            "args": [
+                "--flavor",
+                "free"
+            ]
         },
         {
-            "name": "flutter_dicoding_story (release mode)",
+            "name": "Story App (free, profile)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "profile",
+            "program": "lib/main_free.dart",
+            "args": [
+                "--flavor",
+                "free"
+            ]
+        },
+        {
+            "name": "Story App (free, release)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "program": "lib/main_free.dart",
+            "args": [
+                "--flavor",
+                "free"
+            ]
+        },
+        {
+            "name": "Story App (paid, debug)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "program": "lib/main_paid.dart",
+            "args": [
+                "--flavor",
+                "paid"
+            ]
+        },
+        {
+            "name": "Story App (paid, profile)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "program": "lib/main_paid.dart",
+            "args": [
+                "--flavor",
+                "paid"
+            ]
+        },
+        {
+            "name": "Story App (paid, release)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "program": "lib/main_paid.dart",
+            "args": [
+                "--flavor",
+                "paid"
+            ]
         }
     ]
 }

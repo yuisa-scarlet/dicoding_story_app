@@ -37,8 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _onScroll() {
-    if (_scrollController.position.pixels >=
-        _scrollController.position.maxScrollExtent - 200) {
+    if (!_scrollController.hasClients) return;
+    if (_scrollController.position.extentAfter < 240) {
       context.read<StoryListProvider>().fetchMoreStories();
     }
   }
@@ -47,8 +47,8 @@ class _HomeScreenState extends State<HomeScreen> {
     if (!context.read<AuthProvider>().isLoggedIn) return;
 
     await context.read<StoryListProvider>().fetchStories(
-          forceRefresh: forceRefresh,
-        );
+      forceRefresh: forceRefresh,
+    );
   }
 
   @override
@@ -70,22 +70,19 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context, storyProvider, _) {
           final storyState = storyProvider.state;
 
+          Widget content;
+
           if (storyState is BaseResultStateLoading ||
               storyState is BaseResultStateInitial) {
-            return const LoadingShimmer();
-          }
-
-          if (storyState is BaseResultStateError<List<StoryModel>>) {
-            return Center(
+            content = const LoadingShimmer();
+          } else if (storyState is BaseResultStateError<List<StoryModel>>) {
+            content = Center(
               child: Padding(
                 padding: const EdgeInsets.all(24),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      storyState.errorMessage,
-                      textAlign: TextAlign.center,
-                    ),
+                    Text(storyState.errorMessage, textAlign: TextAlign.center),
                     const SizedBox(height: 12),
                     OutlinedButton(
                       onPressed: () => _loadStories(forceRefresh: true),
@@ -95,26 +92,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             );
-          }
-
-          if (storyState is! BaseResultStateSuccess<List<StoryModel>>) {
-            return const SizedBox.shrink();
-          }
-
-          final stories = storyState.data;
-
-          if (stories.isEmpty) {
-            return Center(child: Text(strings.noStories));
-          }
-
-          return RefreshIndicator(
-            onRefresh: () => _loadStories(forceRefresh: true),
-            child: Consumer<StoryListProvider>(
-              builder: (context, provider, _) {
-                return ListView.builder(
+          } else if (storyState is BaseResultStateSuccess<List<StoryModel>>) {
+            final stories = storyState.data;
+            if (stories.isEmpty) {
+              content = Center(child: Text(strings.noStories));
+            } else {
+              content = RefreshIndicator(
+                onRefresh: () => _loadStories(forceRefresh: true),
+                child: ListView.builder(
                   controller: _scrollController,
                   physics: const AlwaysScrollableScrollPhysics(),
-                  itemCount: stories.length + (provider.isLoadingMore ? 1 : 0),
+                  itemCount:
+                      stories.length + (storyProvider.isLoadingMore ? 1 : 0),
                   itemBuilder: (context, index) {
                     if (index == stories.length) {
                       return const Padding(
@@ -123,15 +112,39 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     }
                     final story = stories[index];
-                    return StoryCard(
-                      story: story,
-                      onTap: () => context
-                          .read<NavigationProvider>()
-                          .goToStoryDetail(story.id),
+                    return TweenAnimationBuilder<double>(
+                      duration: Duration(milliseconds: 220 + (index % 8) * 35),
+                      tween: Tween(begin: 0, end: 1),
+                      curve: Curves.easeOutCubic,
+                      builder: (context, value, child) {
+                        return Opacity(
+                          opacity: value,
+                          child: Transform.translate(
+                            offset: Offset(0, 12 * (1 - value)),
+                            child: child,
+                          ),
+                        );
+                      },
+                      child: StoryCard(
+                        story: story,
+                        onTap: () => context
+                            .read<NavigationProvider>()
+                            .goToStoryDetail(story.id),
+                      ),
                     );
                   },
-                );
-              },
+                ),
+              );
+            }
+          } else {
+            content = const SizedBox.shrink();
+          }
+
+          return AnimatedSwitcher(
+            duration: const Duration(milliseconds: 240),
+            child: KeyedSubtree(
+              key: ValueKey(storyState.runtimeType),
+              child: content,
             ),
           );
         },

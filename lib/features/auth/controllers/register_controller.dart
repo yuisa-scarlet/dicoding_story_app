@@ -8,10 +8,7 @@ import '../../../shared/widgets/app_snack_bar.dart';
 import '../providers/auth_provider.dart';
 
 class RegisterController {
-  RegisterController({
-    required this.context,
-    required this.isMounted,
-  }) {
+  RegisterController({required this.context}) {
     formKey = GlobalKey<FormState>();
     nameController = TextEditingController();
     emailController = TextEditingController();
@@ -19,7 +16,6 @@ class RegisterController {
   }
 
   final BuildContext context;
-  final bool Function() isMounted;
 
   late final GlobalKey<FormState> formKey;
   late final TextEditingController nameController;
@@ -36,18 +32,20 @@ class RegisterController {
     if (!formKey.currentState!.validate()) return;
 
     final authProvider = context.read<AuthProvider>();
+    final navigationProvider = context.read<NavigationProvider>();
+    final strings = context.strings;
     await authProvider.register(
       name: nameController.text.trim(),
       email: emailController.text.trim(),
       password: passwordController.text,
     );
 
-    if (!isMounted()) return;
+    if (!context.mounted) return;
 
     final state = authProvider.registerState;
     if (state is BaseResultStateSuccess<void>) {
-      AppSnackBar.success(context, context.strings.registerSuccess);
-      context.read<NavigationProvider>().goToLogin();
+      AppSnackBar.success(context, strings.registerSuccess);
+      navigationProvider.goToLogin();
       return;
     }
     if (state is BaseResultStateError<void>) {

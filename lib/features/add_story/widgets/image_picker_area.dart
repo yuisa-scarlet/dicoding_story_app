@@ -91,10 +91,7 @@ class ImagePickerArea extends StatelessWidget {
               ),
               label: Text(
                 strings.selectImage,
-                style: const TextStyle(
-                  color: AppColor.primary,
-                  fontSize: 13,
-                ),
+                style: const TextStyle(color: AppColor.primary, fontSize: 13),
               ),
             ),
           ),

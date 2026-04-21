@@ -5,11 +5,7 @@ import '../../../shared/model/story.dart';
 import '../../../shared/theme/app_color.dart';
 
 class StoryCard extends StatelessWidget {
-  const StoryCard({
-    required this.story,
-    required this.onTap,
-    super.key,
-  });
+  const StoryCard({required this.story, required this.onTap, super.key});
 
   final StoryModel story;
   final VoidCallback onTap;
@@ -95,15 +91,15 @@ class StoryCard extends StatelessWidget {
                   useShimmer: true,
                   errorBuilder: (context, error, stackTrace) =>
                       const ColoredBox(
-                    color: Color(0xFFF3F4F6),
-                    child: Center(
-                      child: Icon(
-                        Icons.broken_image_outlined,
-                        size: 48,
-                        color: AppColor.disabled,
+                        color: Color(0xFFF3F4F6),
+                        child: Center(
+                          child: Icon(
+                            Icons.broken_image_outlined,
+                            size: 48,
+                            color: AppColor.disabled,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
                 ),
               ),
             ),
